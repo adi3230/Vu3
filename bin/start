@@ -1,0 +1,1 @@
+docker exec -it vu3-form-node-1 bash

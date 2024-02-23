@@ -1,0 +1,19 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  touch-action: manipulation;
+  font-family: $font-family;
+  font-weight: font-weight(regular);
+  color: clr('black');
+}
+
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}

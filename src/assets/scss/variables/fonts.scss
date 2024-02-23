@@ -1,0 +1,11 @@
+$font-weights: (
+        regular: 400,
+        medium: 500,
+        bold: 800
+) !default;
+
+$font-family: "national", sans-serif !default;
+
+@function font-weight($key: regular) {
+  @return map-get($map: $font-weights, $key: $key);
+}
