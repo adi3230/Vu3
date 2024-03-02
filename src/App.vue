@@ -46,6 +46,22 @@ const products = ref([
   }
 ])
 const userSelection = ref(null);
+const form = reactive({
+  firstName: '',
+  lastName: '',
+  streetName: '',
+  additionalStreetInfo: '',
+  postcode: '',
+  city: '',
+  country: '',
+  email: '',
+  telephone: ''
+});
+
+const sendForm = () => {
+  console.log('I am clicke din child');
+}
+
 </script>
 
 <template>
@@ -66,9 +82,20 @@ const userSelection = ref(null);
                :mobile-image="'./src/assets/header-home-collection-x-m.jpg'"
   />
   <div class="page-wrap">
+    {{form}}
     <div class="single-sample">
       <ProductOptions v-model:selected-option="userSelection" :product-options="products"/>
-      <ContactForm />
+      <ContactForm v-model:first-name="form.firstName"
+                   v-model:last-name="form.lastName"
+                   v-model:street-name="form.streetName"
+                   v-model:additional-street-info="form.additionalStreetInfo"
+                   v-model:postcode="form.postcode"
+                   v-model:city="form.city"
+                   v-model:country="form.country"
+                   v-model:email="form.email"
+                   v-model:telephone="form.telephone"
+                   @send="sendForm"
+      />
     </div>
   </div>
 

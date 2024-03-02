@@ -1,7 +1,6 @@
 <script setup>
 
 import {ref} from "vue";
-import ProductOptions from "./ProductOptions.vue";
 
 const selectedOption = ref(null);
 const props = defineProps({
@@ -44,8 +43,10 @@ const isOptionSelected = (option) => {
              v-model="selectedOption"
              @change="updateSelectedOption(option)"
       />
-      <span>{{ option.headline }}</span>
-      <span>{{ option.subHeadline }}</span>
+      <div class="option-content">
+        <span>{{ option.headline }}</span>
+        <span>{{ option.subHeadline }}</span>
+      </div>
       <ul v-if="option.variants.length > 0" class="product-options__variants">
         <li v-for="variant in option.variants" :key="variant.id">
           <label for="variant.sku"
@@ -58,8 +59,10 @@ const isOptionSelected = (option) => {
                    v-model="selectedOption"
                    @change="updateSelectedOption(variant, option)"
             />
-            <span>{{ variant.headline }}</span>
-            <span>{{ variant.subHeadline }}</span>
+            <div class="option-content">
+              <span>{{ option.headline }}</span>
+              <span>{{ option.subHeadline }}</span>
+            </div>
           </label>
         </li>
       </ul>
@@ -81,6 +84,19 @@ const isOptionSelected = (option) => {
   border: 2px solid transparent;
   position: relative;
   transition: border .3s ease-in-out;
+}
+
+.product-options__option:hover {
+  cursor: pointer;
+}
+
+.product-options__option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.product-options__option input[type="radio"]:checked + .option-content {
+  font-weight: bold;
 }
 
 .product-options__variants {
